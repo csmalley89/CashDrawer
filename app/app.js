@@ -4,15 +4,14 @@ var app = angular.module("CashDrawer", ["ngRoute"]);
 
 app.config(function($routeProvider){
   $routeProvider.
-    when('/',{
+    when('/welcome',{
       templateUrl: 'partials/home.html',
-      controller: 'HomeCtrl'
     }).
-    when('/open-shop', {
+    when('/openshop', {
       templateUrl: 'partials/cashbal.html',
       controller: 'LedgerCtrl'
     }).
-    when('/close-shop', {
+    when('/closeshop', {
       templateUrl: 'partials/cashbal.html',
       controller: "LedgerCtrl"
     }).
@@ -20,7 +19,7 @@ app.config(function($routeProvider){
       templateUrl: 'partials/inventory.html',
       controller: "ProductCtrl"
     }).
-    when('/cash-register', {
+    when('/cashregister', {
       templateUrl: 'partials/register.html',
       controller: "OrderCtrl"
     }).

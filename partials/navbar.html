@@ -1,34 +1,18 @@
   <div class="navbar-fixed" ng-controller="NavCtrl">
     <nav class="black" role="navigation">
       <div class="nav-wrapper container">
-        <a ng-href="#/" class="brand-logo" href="#" id="logo-container">CashDrawer</a>
+        <a ng-href="#/" class="brand-logo" id="logo-container">CashDrawer</a>
         <ul class="right hide-on-med-and-down">
-          <li ng-show="!isOpen">
-            <a ng-href="#/open-shop">Open Shop</a>
-          </li>
-          <li ng-show="isOpen">
-            <a ng-href="#/close-shop">Close Shop</a>
-          </li>
-          <li ng-show="isOpen">
-            <a ng-href="#/inventory">My Inventory</a>
-          </li>
-          <li ng-show="isOpen">
-            <a ng-href="#/cash-register">Cash Register</a>
-          </li>
+          <li ng-show="!isOpen"><a ng-href="#!/openshop">Open Shop</a></li>
+          <li ng-show="isOpen"><a ng-href="#!/closeshop">Close Shop</a></li>
+          <li ng-show="isOpen"><a ng-href="#!/inventory">My Inventory</a></li>
+          <li ng-show="isOpen"><a ng-href="#!/cashregister">Cash Register</a></li>
         </ul>
         <ul class="side-nav" id="nav-mobile">
-          <li ng-show="!isOpen">
-            <a ng-href="#/open-shop">Open Shop</a>
-          </li>
-          <li ng-show="isOpen">
-            <a ng-href="#/close-shop">Close Shop</a>
-          </li>
-          <li ng-show="isOpen">
-            <a ng-href="#/inventory">My Inventory</a>
-          </li>
-          <li ng-show="isOpen">
-            <a ng-href="#/cash-register">Cash Register</a>
-          </li>
+          <li ng-show="!isOpen"><a ng-href="#!/openshop">Open Shop</a></li>
+          <li ng-show="isOpen"><a ng-href="#!/closeshop">Close Shop</a></li>
+          <li ng-show="isOpen"><a ng-href="#!/inventory">My Inventory</a></li>
+          <li ng-show="isOpen"><a ng-href="#!/cashregister">Cash Register</a></li>
         </ul><a class="button-collapse blue-text accent-2" data-activates="nav-mobile" href="#"><i class="material-icons">menu</i></a>
       </div>
     </nav>

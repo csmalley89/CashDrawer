@@ -1,12 +1,11 @@
 "use strict";
 
 app.controller("NavCtrl", function($scope, $location){
-  $scope.searchText = SearchTermData;
   $scope.navItems = [
-      {url: "#/close-shop", name: "Close Shop", showState: "$parent.isOpen"},
-      {url: "#/open-shop", name: "Open Shop", showState: "!$parent.isOpen"},
-      {url: "#/cash-register", name: "Cash Register", showState: "$parent.isOpen"},
-      {url: "#/inventory", name: "Manage Inventory"}
+      {url: "#/closeshop", name: "Close Shop", showState: "$parent.isOpen"},
+      {url: "#/openshop", name: "Open Shop", showState: "!$parent.isOpen"},
+      {url: "#/cashregister", name: "Cash Register", showState: "$parent.isOpen"},
+      {url: "#/inventory", name: "Manage Inventory", showState: "$parent.isOpen"}
   ];
   $scope.isActive = (viewLocation) => viewLocation === $location.path();
 });

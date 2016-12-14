@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CashDrawer | A Simple User Friendly POS system for cash based businesses</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="lib/bower_components/materialize/dist/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="css/main.css">
+    <script src="https://use.fontawesome.com/e2992a68a7.js">
+  </script>s
+  </head>
+  <body ng-app="CashDrawer">
+    <div ng-include="'partials/navbar.html'"></div>
+    <div class="row">
+        <div ng-view></div>
+    </div>
+
+
+
+    <!-- 3rd party libs -->
+    <script src="lib/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bower_components/materialize/dist/js/materialize.min.js"></script>
+    <script src="lib/bower_components/angular/angular.min.js"></script>
+    <script src="lib/bower_components/angular-materialize/src/angular-materialize.js"></script>
+    <script src="lib/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/chart.js/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+
+    <!-- App specific files -->
+    <script src="app/app.js"></script>
+    <!-- providers -->
+    <script src="app/factories/InventoryFactory.js"></script>
+    <!-- controllers -->
+    <script src="app/controllers/NavCtrl.js"></script>
+
+  </body>
+</html>

@@ -1,2 +1,6 @@
 .sass-cache/
 *.css.map
+lib/bower_components
+lib/node_modules
+css/
+lib/.sass-cache

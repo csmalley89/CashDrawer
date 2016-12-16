@@ -1,11 +1,11 @@
 "use strict";
 
-var app = angular.module("CashDrawer", ["ngRoute"]);
+var app = angular.module("CashDrawer", ["ngRoute", "ui.materialize"]);
 
 app.config(function($routeProvider){
   $routeProvider.
-    when('/welcome',{
-      templateUrl: 'partials/home.html',
+    when('/',{
+      templateUrl: 'partials/demo.html',
     }).
     when('/openshop', {
       templateUrl: 'partials/cashbal.html',

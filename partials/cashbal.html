@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col s12 m4">
-      <h2 class="center">Ready to open shop?</h2><br>
-      <h4 class="center">Begin by counting up your cash drawer below</h4>
+      <h3 class="center">Ready to open shop?</h3><br>
     </div>
   </div>
   <form name="MoneyForm">
@@ -105,5 +104,11 @@
       <h3>${{cashDrawerTotal | number: 2}}</h3>
     </div>
   </form>
-
+  <div ng-include="'partials/product-form.html'"></div>
 </div>
+
+
+
+
+
+

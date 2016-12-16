@@ -1,0 +1,30 @@
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.productCard {
+  height: inherit;
+  max-height: 170px;
+  border-radius: 25px;
+}
+
+#shoppingCartPanel {
+  height: 100%;
+  min-height: 100vh;
+  display: table-row;
+}
+
+#transactionDisplay {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 33.33vw;
+}
+
+.total {
+  padding: 10px;
+  margin-left: -10px;
+  margin-right: -12px;
+}

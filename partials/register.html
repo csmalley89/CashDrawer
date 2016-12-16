@@ -1,0 +1,65 @@
+<div class="row">
+
+<!-- Content to the left side of the screen -->
+  <div class="col s8 m8 l8">
+<!-- Product Cards -->
+    <div ng-repeat="product in products">
+      <div class="col s2">
+        <div class="productCard card small blue-grey darken-3">
+          <div class="card-content white-text">
+            <span class="card-title">{{product.name}}</span>
+            <h5>${{product.price}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right side pannel for transactions -->
+  <div id="shoppingCartPanel" class="col s4 m4 l8 blue darken-1">
+  <!--Panels for Product selection  -->
+    <ul class="collection">
+      <li ng-repeat="transactionProduct in transactionProducts" class="collection-item">
+        <p>{{transactionProduct.name}}</p>
+<!--           <div class="input-field">
+          <input type="number" class="validate" length="1">
+        </div> -->
+        <p>{{transactionProduct.qty}} X {{transactionProduct.price}}</p>
+        <div class="secondary-content">
+          <h6>${{lineItemSubTotal | number: 2}}</h6>
+          <i ng-click="remove" class="fa fa-trash" aria-hidden="true"></i> <!-- Trashcan to remove transaction -->
+        </div>
+      </li>
+    </ul>
+<!-- Complete Transaction Display Area -->
+    <div class="valign-wrapper">
+      <div class="valign">
+        <div id="transactionDisplay" class="blue lighten-4 col s12 m12">
+          <h5>Subtotal: ${{transactionSubTotal | number: 2}}<br>Tax: ${{transactionTax | number: 2}}</h5>
+          <h5 class="total green darken-3 white-text">Total: ${{transactionSubTotal | number: 2}}</h5>
+          <a class="waves-effect waves-green red white-text btn">Cancel</a>
+<!--        <a class="waves-effect waves-green red white-text btn" href="#paymentModal" modal>Payment</a> -->
+          <a class="waves-effect waves-green red white-text btn">Payment</a><br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Payment Modal -->
+<div id="paymentModal" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h5>Cash Recieved</h5>
+      <div input-field>
+        <input class="blue lighten-5" type="number" ng-model="transaction.CashRecieved" length="6">
+      </div>
+      <h6>Change Due: ${{orderChange | number: 2}}</h6>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Complete Transaction</a>
+    </div>
+</div>

@@ -17,20 +17,23 @@
 
   <!-- Right side pannel for transactions -->
   <div id="shoppingCartPanel" class="col s4 m4 l8 blue darken-1">
-  <!--Panels for Product selection  -->
-    <ul class="collection">
-      <li ng-repeat="transactionProduct in transactionProducts" class="collection-item">
-        <p>{{transactionProduct.name}}</p>
-<!--           <div class="input-field">
-          <input type="number" class="validate" length="1">
-        </div> -->
-        <p>{{transactionProduct.qty}} X {{transactionProduct.price}}</p>
-        <div class="secondary-content">
-          <h6>${{lineItemSubTotal | number: 2}}</h6>
-          <i ng-click="remove" class="fa fa-trash" aria-hidden="true"></i> <!-- Trashcan to remove transaction -->
-        </div>
-      </li>
-    </ul>
+  <!--Panels for line items in current order  -->
+    <table class="bordered card-panel lineItem">
+      <tr ng-repeat="transactionProduct in transactionProducts">
+        <td>
+          <a class="delBtn red white-text">X</a>
+        </td>
+        <td>
+          <strong>{{transactionProduct.name}}<strong>
+        </td>
+        <td><input type="number" length="2" min="0" max="9" class="lineItemQty" placeholder="1">{{transactionProduct.qty}}</td>
+        <td>X</td>
+        <td>{{transactionProduct.price}}</td>
+        <td>
+          <strong class="red-text">${{lineItemSubTotal | number: 2}}</strong>
+        </td>
+      </tr>
+    </table>
 <!-- Complete Transaction Display Area -->
     <div class="valign-wrapper">
       <div class="valign">

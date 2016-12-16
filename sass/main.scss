@@ -23,8 +23,31 @@ input[type=number]::-webkit-outer-spin-button {
   width: 33.33vw;
 }
 
+#subTax {
+  width: 26vw;
+}
+
+.lineItem {
+  margin: 0;
+  border-bottom: 2px solid black;
+}
+
 .total {
   padding: 10px;
   margin-left: -10px;
   margin-right: -12px;
+}
+
+.delBtn {
+  padding: 5px;
+  border-radius: 25%;
+  margin-right: 10px;
+}
+
+input.lineItemQty {
+  border: 1px solid !important;
+  max-width: 20px;
+  margin: 0 !important;
+  height: inherit !important;
+  text-align: -webkit-center;
 }

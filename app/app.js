@@ -1,6 +1,7 @@
 "use strict";
 
 var app = angular.module("CashDrawer", ["ngRoute", "ui.materialize"]);
+.constant("CashDrawerAPI", "http://localhost:5000/")
 
 app.config(function($routeProvider){
   $routeProvider.

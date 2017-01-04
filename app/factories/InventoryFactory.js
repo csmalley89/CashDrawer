@@ -68,6 +68,33 @@ app.factory("InventoryFactory", ($q, $http, CashDrawerAPI) => {
     });
   };
 
+// Ledger
+  let postOpenDrawer = (newDrawer) => {
+    let postObj = {OpenDrawerBalance: newDrawer , ClosedDrawerBalance: 0}
+    return $q( (resolve, reject) => {
+      $http.post(`${CashDrawerAPI}ledger.json`, JSON.stringify(postObj))
+        .success((objFromDb) => {
+          resolve(objFromDb);
+        })
+      .error((error)=>{
+        reject(error);
+      });
+    });
+  };
 
-  return{getProductList, postNewProduct, deleteProduct, getSingleProduct, updateProduct};
+  let postCloseDrawer = (newDrawer) => {
+    let postObj = {OpenDrawerBalance: 0 , ClosedDrawerBalance: newDrawer}
+    return $q( (resolve, reject) => {
+      $http.post(`${CashDrawerAPI}ledger.json`, JSON.stringify(postObj))
+        .success((objFromDb) => {
+          resolve(objFromDb);
+        })
+      .error((error)=>{
+        reject(error);
+      });
+    });
+  };
+
+
+  return{getProductList, postNewProduct, deleteProduct, getSingleProduct, updateProduct, postOpenDrawer, postCloseDrawer};
 })

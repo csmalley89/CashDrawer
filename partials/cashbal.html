@@ -98,14 +98,16 @@
         </div>
       </div>
     </div><br><br>
-    <input type=button class="waves-effect waves-light btn" name=calc value="Calculate" ng-click="total()">&nbsp;&nbsp;&nbsp;
-    <input type="reset" class="waves-effect waves-light btn" value="Clear Values"><br><br>
+    <input type="button" class="waves-effect waves-light btn" name="calc" value="Calculate" ng-click="total()">&nbsp;&nbsp;&nbsp;
+    <input type="reset" class="waves-effect waves-light btn" value="Clear Values" ng-click="clearTotal()">&nbsp;&nbsp;&nbsp;
+    <input type="button" class="red darken-1 white-text btn" value="Continue" ng-click="openDrawer()" ng-show="showContinue"><br><br>
     <div class="col s1 m1 l1">
       <h3>${{cashDrawerTotal | number: 2}}</h3>
     </div>
   </form>
-  <div ng-include="'partials/product-form.html'"></div>
 </div>
+
+
 
 
 

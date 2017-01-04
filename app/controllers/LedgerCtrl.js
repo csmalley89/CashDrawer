@@ -1,6 +1,6 @@
 "use strict"
 
-app.controller('LedgerCtrl', function($scope, $window){
+app.controller('LedgerCtrl', function($scope, $window, $location, InventoryFactory){
   $scope.cashDrawerTotal = 0;
 
 
@@ -35,6 +35,32 @@ app.controller('LedgerCtrl', function($scope, $window){
     ($scope.cashDrawer.dme * .1)+
     ($scope.cashDrawer.nck * .05)+
     ($scope.cashDrawer.pny * .01)]*100)/100
+    $scope.showContinue = true
   };
 
-})
+  $scope.showContinue = false;
+
+  $scope.clearTotal = () => {
+    $scope.cashDrawerTotal = 0;
+  };
+
+  // $scope.openDrawer = () => {
+  //   InventoryFactory.postOpenDrawer($scope.cashDrawerTotal)
+  //   .then (()=> {
+  //     $scope.postOpenDrawerTotalQuestion = true;
+  //     $scope.cashBal = false;
+  //   });
+  // };
+
+  $scope.openDrawer = () => {
+    $location.url('/openshop2')
+  };
+
+  $scope.closeDrawer = () => {
+    InventoryFactory.postCloseDrawer($scope.cashDrawerTotal)
+    .then (()=> {
+      $location.url('/cashregister')
+    });
+  };
+
+});

@@ -7,17 +7,12 @@ app.controller("InventoryCtrl", function($scope, $http, $location, $routeParams,
     $scope.products = productCollection;
   });
 
-  // $scope.getProductList = function () {
-  //   $http.get('http://localhost:5000/products')
-  //     .then(function (products) {
-  //       $scope.products = products;
-
-  //       console.log(products);
-  //     });
-  // };
-
   $scope.goToAddProduct = function(){
     $location.url('/addproduct');
+  };
+
+  $scope.goToEditProduct = function(id){
+    $location.url(`/editproduct/${id}`);
   };
 
 });
@@ -48,14 +43,14 @@ app.controller("InventoryNewCtrl", function($scope, InventoryFactory, $location,
 app.controller("InventoryEditCtrl", function($scope, InventoryFactory, $location, $routeParams){
   $scope.title = "Update Product";
   $scope.btnText = "Update";
-  $scope.newProduct = {};
+  $scope.product = {};
 
   InventoryFactory.getSingleProduct($routeParams.productId)
   .then((response) => {
-    $scope.newTask = response;
+    $scope.product = response;
   });
   $scope.addNewItem = () => {
-    InventoryFactory.updateProduct($routeParams.productId, $scope.prodcut)
+    InventoryFactory.updateProduct($routeParams.productId, $scope.product)
     .then((response) => {
       $location.url("/inventory");
     });

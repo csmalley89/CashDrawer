@@ -41,7 +41,7 @@ app.factory("InventoryFactory", (CashDrawerAPI, $q, $http) => {
 
   let updateProduct = (productId, editedProduct) => {
     return $q((resolve, reject) => {
-      $http.patch(`${CashDrawerAPI}products/${productId}`, JSON.stringify(editedProduct))
+      $http.put(`${CashDrawerAPI}products/${productId}`, JSON.stringify(editedProduct))
       .then((objFromDb) =>{
         resolve(objFromDb);
       })

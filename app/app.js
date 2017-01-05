@@ -10,7 +10,7 @@ app.config(function($routeProvider){
     }).
     when('/openshop', {
       templateUrl: 'partials/cashbal.html',
-      controller: 'LedgerCtrl'
+      controller: 'LedgerOpenCtrl'
     }).
     when('/openshop2', {
       templateUrl: 'partials/postOpenDrawerBal.html',
@@ -24,13 +24,13 @@ app.config(function($routeProvider){
       templateUrl: 'partials/product-form.html',
       controller: 'InventoryNewCtrl'
     }).
-    when('/editproduct', {
-      templateUrl: 'partials/inventory.html',
+    when('/editproduct/:productId', {
+      templateUrl: 'partials/product-form.html',
       controller: 'InventoryEditCtrl'
     }).
     when('/closeshop', {
       templateUrl: 'partials/cashbal.html',
-      controller: 'LedgerCtrl'
+      controller: 'LedgerCloseCtrl'
     }).
     when('/cashregister', {
       templateUrl: 'partials/register.html',

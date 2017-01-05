@@ -18,23 +18,23 @@ app.config(function($routeProvider){
     }).
     when('/inventory', {
       templateUrl: 'partials/inventory.html',
-      controller: "InventoryCtrl"
+      controller: 'InventoryCtrl'
     }).
     when('/addproduct', {
       templateUrl: 'partials/product-form.html',
-      controller: "InventoryNewCtrl"
+      controller: 'InventoryNewCtrl'
     }).
     when('/editproduct', {
       templateUrl: 'partials/inventory.html',
-      controller: "InventoryEditCtrl"
+      controller: 'InventoryEditCtrl'
     }).
     when('/closeshop', {
       templateUrl: 'partials/cashbal.html',
-      controller: "LedgerCtrl"
+      controller: 'LedgerCtrl'
     }).
     when('/cashregister', {
       templateUrl: 'partials/register.html',
-      controller: "OrderCtrl"
+      controller: 'OrderCtrl'
     }).
     otherwise('/');
 });

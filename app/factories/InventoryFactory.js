@@ -1,23 +1,15 @@
 "use strict";
 
-app.factory("InventoryFactory", ($q, $http, CashDrawerAPI) => {
+app.factory("InventoryFactory", (CashDrawerAPI, $q, $http) => {
 
-  let getProductList = (user) => {
+  let getProductList = () => {
     let products = [];
     return $q((resolve, reject) => {
-      $http.get(`${CashDrawerAPI}products.json`)
-      .success((productObject) => {
-        if (productObject !== null) {
-        Object.keys(productObject).forEach((key) => {
-          productObject[key].id = key;
-          products.push(productObject[key]);
-        });
-        resolve(products);
-      } else {
-        resolve(products);
-      }
+      $http.get('http://localhost:5000/products')
+      .then((productObject) => {
+        resolve(productObject.data);
       })
-      .error((error) => {
+      .catch((error) => {
         reject(error);
       });
     });
@@ -25,11 +17,11 @@ app.factory("InventoryFactory", ($q, $http, CashDrawerAPI) => {
 
   let getSingleProduct = (productId) => {
     return $q((resolve, reject) => {
-      $http.get(`${CashDrawerAPI}products/${productId}.json`)
-      .success((productObject) =>{
-        resolve(productObject);
+      $http.get(`${CashDrawerAPI}products/${productId}`)
+      .then((productObject) =>{
+        resolve(productObject.data);
       })
-      .error((error) => {
+      .catch((error) => {
         reject(error);
       });
     });
@@ -37,11 +29,11 @@ app.factory("InventoryFactory", ($q, $http, CashDrawerAPI) => {
 
   let postNewProduct = (newProduct) => {
     return $q( (resolve, reject) => {
-      $http.post(`${CashDrawerAPI}products.json`, JSON.stringify(newProduct))
-        .success((objFromDb) => {
+      $http.post(`${CashDrawerAPI}products`, JSON.stringify(newProduct))
+        .then((objFromDb) => {
           resolve(objFromDb);
         })
-      .error((error)=>{
+      .catch((error)=>{
         reject(error);
       });
     });
@@ -49,11 +41,11 @@ app.factory("InventoryFactory", ($q, $http, CashDrawerAPI) => {
 
   let updateProduct = (productId, editedProduct) => {
     return $q((resolve, reject) => {
-      $http.patch(`${CashDrawerAPI}products/${productId}.json`, JSON.stringify(editedProduct))
-      .success((objFromDb) =>{
+      $http.patch(`${CashDrawerAPI}products/${productId}`, JSON.stringify(editedProduct))
+      .then((objFromDb) =>{
         resolve(objFromDb);
       })
-      .error((error)=>{
+      .catch((error)=>{
         reject(error);
       });
     });
@@ -61,8 +53,8 @@ app.factory("InventoryFactory", ($q, $http, CashDrawerAPI) => {
 
   let deleteProduct = (productId) => {
     return $q((resolve, reject) => {
-      $http.delete(`${CashDrawerAPI}products/${productId}.json`)
-      .success((objFromDb) => {
+      $http.delete(`${CashDrawerAPI}products/${productId}`)
+      .then((objFromDb) => {
         resolve(objFromDb);
       });
     });
@@ -70,26 +62,26 @@ app.factory("InventoryFactory", ($q, $http, CashDrawerAPI) => {
 
 // Ledger
   let postOpenDrawer = (newDrawer) => {
-    let postObj = {OpenDrawerBalance: newDrawer , ClosedDrawerBalance: 0}
+    let postObj = {OpenDrawerBalance: newDrawer , ClosedDrawerBalance: 0};
     return $q( (resolve, reject) => {
-      $http.post(`${CashDrawerAPI}ledger.json`, JSON.stringify(postObj))
-        .success((objFromDb) => {
+      $http.post(`${CashDrawerAPI}ledger`, JSON.stringify(postObj))
+        .then((objFromDb) => {
           resolve(objFromDb);
         })
-      .error((error)=>{
+      .catch((error)=>{
         reject(error);
       });
     });
   };
 
   let postCloseDrawer = (newDrawer) => {
-    let postObj = {OpenDrawerBalance: 0 , ClosedDrawerBalance: newDrawer}
+    let postObj = {OpenDrawerBalance: 0 , ClosedDrawerBalance: newDrawer};
     return $q( (resolve, reject) => {
-      $http.post(`${CashDrawerAPI}ledger.json`, JSON.stringify(postObj))
-        .success((objFromDb) => {
+      $http.post(`${CashDrawerAPI}ledger`, JSON.stringify(postObj))
+        .then((objFromDb) => {
           resolve(objFromDb);
         })
-      .error((error)=>{
+      .catch((error)=>{
         reject(error);
       });
     });
@@ -97,4 +89,4 @@ app.factory("InventoryFactory", ($q, $http, CashDrawerAPI) => {
 
 
   return{getProductList, postNewProduct, deleteProduct, getSingleProduct, updateProduct, postOpenDrawer, postCloseDrawer};
-})
+});

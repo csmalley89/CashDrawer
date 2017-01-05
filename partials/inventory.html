@@ -1,6 +1,10 @@
 
 <div class="row">
   <input type="button" class="waves-effect waves-light btn" value="Add Product" ng-click="goToAddProduct()">
+
+  <!-- Test Button Below -->
+  <!-- <input type="button" class="waves-effect waves-light btn" value="View All Products" ng-click="getProductList()"> -->
+
   <h3>Store Inventory</h3>
   <table class="highlight responsive-table">
     <thead>
@@ -8,7 +12,7 @@
           <th data-field="name">Product</th>
           <th data-field="price">Price</th>
           <th data-field="cost">Cost</th>
-          <th data-field="qty">Quantity</th>
+          <th data-field="quantity">Quantity</th>
           <th data-field="edit">Update</th>
       </tr>
     </thead>
@@ -17,7 +21,7 @@
         <td>{{product.name}}</td>
         <td>${{product.price}}</td>
         <td>${{product.cost}}</td>
-        <td>{{product.qty}}</td>
+        <td>{{product.quantity}}</td>
         <td><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
       </tr>
     </tbody>

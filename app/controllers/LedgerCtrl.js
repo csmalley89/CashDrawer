@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 app.controller('LedgerCtrl', function($scope, $window, $location, InventoryFactory){
   $scope.cashDrawerTotal = 0;
@@ -30,12 +30,12 @@ app.controller('LedgerCtrl', function($scope, $window, $location, InventoryFacto
     ($scope.cashDrawer.two * 2)+
     ($scope.cashDrawer.one * 1)+
     ($scope.cashDrawer.sdl * 1)+
-    ($scope.cashDrawer.hlf * .5)+
-    ($scope.cashDrawer.qtr * .25)+
-    ($scope.cashDrawer.dme * .1)+
-    ($scope.cashDrawer.nck * .05)+
-    ($scope.cashDrawer.pny * .01)]*100)/100
-    $scope.showContinue = true
+    ($scope.cashDrawer.hlf * 0.5)+
+    ($scope.cashDrawer.qtr * 0.25)+
+    ($scope.cashDrawer.dme * 0.1)+
+    ($scope.cashDrawer.nck * 0.05)+
+    ($scope.cashDrawer.pny * 0.01)]*100)/100;
+    $scope.showContinue = true;
   };
 
   $scope.showContinue = false;
@@ -44,22 +44,21 @@ app.controller('LedgerCtrl', function($scope, $window, $location, InventoryFacto
     $scope.cashDrawerTotal = 0;
   };
 
-  // $scope.openDrawer = () => {
-  //   InventoryFactory.postOpenDrawer($scope.cashDrawerTotal)
-  //   .then (()=> {
-  //     $scope.postOpenDrawerTotalQuestion = true;
-  //     $scope.cashBal = false;
-  //   });
-  // };
-
   $scope.openDrawer = () => {
-    $location.url('/openshop2')
+    InventoryFactory.postOpenDrawer($scope.cashDrawerTotal)
+    .then (()=> {
+      $location.url('/openshop2');
+    });
   };
+
+  // $scope.openDrawer = () => {
+  //   $location.url('/openshop2')
+  // };
 
   $scope.closeDrawer = () => {
     InventoryFactory.postCloseDrawer($scope.cashDrawerTotal)
     .then (()=> {
-      $location.url('/cashregister')
+      $location.url('/cashregister');
     });
   };
 

@@ -1,15 +1,16 @@
+<div ng-include="'partials/searchbar.html'"></div>
 <div class="row">
 
 <!-- Content to the left side of the screen -->
   <div class="col s8 m8 l8">
 <!-- Product Cards -->
     <div ng-repeat="product in products">
-      <div class="col s2">
-        <div class="productCard card small blue-grey darken-3">
-          <div class="card-content white-text">
+      <div class="col s4 m3 l2">
+        <div class="productCard card small blue-grey darken-4">
+          <a class="card-content white-text">
             <span class="card-title">{{product.name}}</span>
             <h5>${{product.price}}</h5>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -17,34 +18,41 @@
 
   <!-- Right side pannel for transactions -->
   <div id="shoppingCartPanel" class="col s4 m4 l8 blue darken-1">
+    <div class="col s12">
   <!--Panels for line items in current order  -->
-    <table class="bordered card-panel lineItem">
-      <tr ng-repeat="transactionProduct in transactionProducts">
-        <td>
-          <a class="delBtn red white-text">X</a>
-        </td>
-        <td>
-          <strong>{{transactionProduct.name}}<strong>
-        </td>
-        <td><input type="number" length="2" min="0" max="9" class="lineItemQty" placeholder="1">{{transactionProduct.qty}}</td>
-        <td>X</td>
-        <td>{{transactionProduct.price}}</td>
-        <td>
-          <strong class="red-text">${{lineItemSubTotal | number: 2}}</strong>
-        </td>
-      </tr>
-    </table>
+      <table class="bordered card-panel lineItem">
+        <tr>
+          <td><a class="delBtn red white-text">X</a></td>
+          <td><strong>{{transactionProduct.name}}<strong></td>
+          <td><input type="number" length="2" min="0" max="9" class="lineItemQty" placeholder="1" ng-model="transactionProduct.quantity"></td>
+          <td>X</td>
+          <td>{{transactionProduct.price}}</td>
+          <td><strong class="red-text">${{lineItemSubTotal | number: 2}}</strong></td>
+        </tr>
+      </table>
 <!-- Complete Transaction Display Area -->
-    <div class="valign-wrapper">
-      <div class="valign">
-        <div id="transactionDisplay" class="blue lighten-4 col s12 m12">
-          <h5>Subtotal: ${{transactionSubTotal | number: 2}}<br>Tax: ${{transactionTax | number: 2}}</h5>
-          <h5 class="total green darken-3 white-text">Total: ${{transactionSubTotal | number: 2}}</h5>
-          <a class="waves-effect waves-green red white-text btn">Cancel</a>
-<!--        <a class="waves-effect waves-green red white-text btn" href="#paymentModal" modal>Payment</a> -->
-          <a class="waves-effect waves-green red white-text btn">Payment</a><br><br>
+      <div class="valign-wrapper">
+        <div class="valign">
+          <div id="transactionDisplay" class="blue lighten-4 col s12 m12">
+            <h5>
+              <table id="subTax">
+                <tr>
+                  <td>Subtotal:</td>
+                  <td>${{transactionTax | number: 2}}</td>
+                </tr>
+                <tr>
+                  <td>Tax:</td>
+                  <td>${{transactionTax | number: 2}}</td>
+                </tr>
+              </table>
+            </h5>
+            <a class="waves-effect waves-green red white-text btn">Cancel</a>
+  <!--        <a class="waves-effect waves-green red white-text btn" href="#paymentModal" modal>Payment</a> -->
+            <a class="waves-effect waves-green red white-text btn">Payment</a><br><br>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -54,7 +62,7 @@
 
 
 <!-- Payment Modal -->
-<div id="paymentModal" class="modal bottom-sheet">
+<!-- <div id="paymentModal" class="modal bottom-sheet">
     <div class="modal-content">
       <h5>Cash Recieved</h5>
       <div input-field>
@@ -65,4 +73,4 @@
     <div class="modal-footer">
         <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Complete Transaction</a>
     </div>
-</div>
+</div> -->

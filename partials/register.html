@@ -26,7 +26,7 @@
           <td><input type="number" length="2" min="1" max="{{product.quantity}}" class="lineItemQty" placeholder="1" ng-model="product.purchaseNumber" ng-change="lineTotal(product)"></td>
           <td>X</td>
           <td>{{product.price}}</td>
-          <td><strong class="red-text">${{lineSubtotal | number: 2}}</strong></td>
+          <td><strong ng-bind="'$' + (product.price * product.purchaseNumber | number: 2)" class="red-text"></strong></td>
         </tr>
       </table>
 <!-- Complete Transaction Display Area -->
@@ -37,11 +37,11 @@
               <table id="subTax">
                 <tr>
                   <td>Subtotal:</td>
-                  <td>${{transactionSubtotal | number: 2}}</td>
+                  <td>${{orderSubtotal | number: 2}}</td>
                 </tr>
                 <tr>
                   <td>Tax:</td>
-                  <td>${{transactionTax | number: 2}}</td>
+                  <td>${{orderTax | number: 2}}</td>
                 </tr>
               </table>
             </h5>
@@ -49,7 +49,7 @@
               <table>
                 <tr>
                   <td>Total:</td>
-                  <td>${{transactionTotal | number: 2}}</td>
+                  <td>${{orderTotal | number: 2}}</td>
                 </tr>
               </table>
             </h5>

@@ -30,14 +30,14 @@
         </tr>
       </table>
 <!-- Complete Transaction Display Area -->
-      <div class="valign-wrapper">
+      <div class="valign-wrapper" ng-hide="hideTrans">
         <div class="valign">
           <div id="transactionDisplay" class="blue lighten-4 col s12 m12">
             <h5>
               <table id="subTax">
                 <tr>
                   <td>Subtotal:</td>
-                  <td>${{transactionTax | number: 2}}</td>
+                  <td>${{transactionSubtotal | number: 2}}</td>
                 </tr>
                 <tr>
                   <td>Tax:</td>
@@ -45,9 +45,49 @@
                 </tr>
               </table>
             </h5>
-            <a class="waves-effect waves-green red white-text btn">Cancel</a>
-  <!--        <a class="waves-effect waves-green red white-text btn" href="#paymentModal" modal>Payment</a> -->
-            <a class="waves-effect waves-green red white-text btn">Payment</a><br><br>
+            <h5 class="total green darken-3 white-text">
+              <table>
+                <tr>
+                  <td>Total:</td>
+                  <td>${{transactionTotal | number: 2}}</td>
+                </tr>
+              </table>
+            </h5>
+            <a class="waves-effect waves-green red white-text btn" type="reset">Cancel</a>
+            <a ng-click="payment()" class="waves-effect waves-green red white-text btn">Payment</a><br><br>
+          </div>
+        </div>
+      </div>
+<!-- PAYMENT AREA -->
+      <div class="valign-wrapper" ng-show="showPayment">
+        <div class="valign">
+          <div id="transactionDisplay" class="blue lighten-4 col s12 m12">
+            <h5 class="total green darken-3 white-text">
+              <table>
+                <tr>
+                  <td>Total:</td>
+                  <td>${{transactionTotal | number: 2}}</td>
+                </tr>
+              </table>
+            </h5>
+            <h5>
+              <table id="subTax">
+                <tr>
+                  <td>Cash Recieved:</td>
+                  <td>
+                    <div input-field>
+                      <input type="number" ng-model="currentOrder.CashRecieved" length="7" step="any" ng-change="changeDue(currentOrder)">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Change Due:</td>
+                  <td>${{orderChange | number: 2}}</td>
+                </tr>
+              </table>
+            </h5>
+            <a class="waves-effect waves-green red white-text btn" type="reset">Cancel</a>
+            <a class="waves-effect waves-green red white-text btn">Complete Transaction</a><br><br>
           </div>
         </div>
       </div>
@@ -60,16 +100,3 @@
 
 
 
-<!-- Payment Modal -->
-<!-- <div id="paymentModal" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h5>Cash Recieved</h5>
-      <div input-field>
-        <input class="blue lighten-5" type="number" ng-model="transaction.CashRecieved" length="6">
-      </div>
-      <h6>Change Due: ${{orderChange | number: 2}}</h6>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Complete Transaction</a>
-    </div>
-</div> -->

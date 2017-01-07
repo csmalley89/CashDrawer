@@ -1,6 +1,7 @@
 "use strict";
 
-app.controller("NavCtrl", function($scope, $location, SearchTermData){
+app.controller("NavCtrl", function($scope, SearchTermData, $location){
+  $scope.searchText = SearchTermData;
   $scope.navItems = [
       {url: "#/closeshop", name: "Close Shop"},
       {url: "#/openshop", name: "Open Shop"},

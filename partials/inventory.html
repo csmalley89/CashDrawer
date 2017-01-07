@@ -1,4 +1,4 @@
-
+<div ng-include="'partials/searchbar.html'"></div>
 <div class="row">
   <input type="button" class="waves-effect waves-light btn" value="Add Product" ng-click="goToAddProduct()">
 
@@ -17,10 +17,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="product in products">
+      <tr ng-repeat="product in products | filter: searchText.search">
         <td>{{product.name}}</td>
-        <td>${{product.price}}</td>
-        <td>${{product.cost}}</td>
+        <td>${{product.price | number: 2}}</td>
+        <td>${{product.cost | number: 2}}</td>
         <td>{{product.quantity}}</td>
         <td><a ng-click="goToEditProduct(product.productId)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
       </tr>

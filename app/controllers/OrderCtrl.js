@@ -1,10 +1,14 @@
 "use strict";
 
-app.controller("OrderCtrl", function($scope, InventoryFactory, $location){
+app.controller("OrderCtrl", function($scope, InventoryFactory, OrderFactory, $location, SearchTermData){
+  $scope.searchText = SearchTermData;
   $scope.currentOrder = {};
   $scope.products = [];
   $scope.showPayment = false;
   $scope.hideTrans = false;
+  // $scope.order = {
+  //   SubTotal = $scope.
+  // }
 
 // Grabs Products from inventory
   InventoryFactory.getProductList()
@@ -41,8 +45,15 @@ app.controller("OrderCtrl", function($scope, InventoryFactory, $location){
     $scope.orderChange = ($scope.currentOrder.CashRecieved - $scope.orderTotal);
   };
 
+  $scope.test = () => {
+    for (let key in $scope.currentOrder) {
+      console.log($scope.currentOrder[key].name);
+    }
+  };
 
+  // $scope.completeOrder = () => {
 
+  // }
 
 });
 

@@ -1,5 +1,6 @@
 "use strict";
-app.controller("InventoryCtrl", function($scope, $http, $location, $routeParams, InventoryFactory){
+app.controller("InventoryCtrl", function($scope, $http, $location, $routeParams, InventoryFactory, SearchTermData){
+  $scope.searchText = SearchTermData;
   $scope.products = [];
 
   InventoryFactory.getProductList()

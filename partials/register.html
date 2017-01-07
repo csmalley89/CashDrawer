@@ -1,9 +1,9 @@
+<div ng-include="'partials/searchbar.html'"></div>
 <div class="row">
-
 <!-- Content to the left side of the screen -->
   <div class="col s8 m8 l8">
 <!-- Product Cards -->
-    <div ng-repeat="product in products">
+    <div ng-repeat="product in products | filter: searchText.search">
       <div class="col s4 m3 l2">
         <div class="productCard card small blue-grey darken-4" ng-click="addItemToOrder(product)">
           <a class="card-content white-text">
@@ -53,7 +53,7 @@
                 </tr>
               </table>
             </h5>
-            <a class="waves-effect waves-green red white-text btn" type="reset">Cancel</a>
+            <a class="waves-effect waves-green red white-text btn" ng-click="test()">Cancel</a>
             <a ng-click="payment()" class="waves-effect waves-green red white-text btn">Payment</a><br><br>
           </div>
         </div>

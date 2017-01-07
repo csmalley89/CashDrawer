@@ -7,8 +7,8 @@
       <div class="col s4 m3 l2">
         <div class="productCard card small blue-grey darken-4" ng-click="addItemToOrder(product)">
           <a class="card-content white-text">
-            <span class="card-title">{{product.name}}</span>
-            <h5>${{product.price}}</h5>
+            <h6 class="center-align productTitle">{{product.name}}</h6>
+            <h5 class="center-align">${{product.price | number: 2}}</h5>
           </a>
         </div>
       </div>
@@ -21,11 +21,11 @@
   <!--Panels for line items in current order  -->
       <table class="bordered card-panel lineItem">
         <tr ng-repeat="(key, product) in currentOrder">
-          <td><a class="delBtn red white-text">X</a></td>
+          <td><a ng-click="delItem()" class="delBtn red white-text">X</a></td>
           <td><strong>{{product.name}}<strong></td>
           <td><input type="number" length="2" min="1" max="{{product.quantity}}" class="lineItemQty" placeholder="1" ng-model="product.purchaseNumber" ng-change="lineTotal(product)"></td>
           <td>X</td>
-          <td>{{product.price}}</td>
+          <td>{{product.price | number: 2}}</td>
           <td><strong ng-bind="'$' + (product.price * product.purchaseNumber | number: 2)" class="red-text"></strong></td>
         </tr>
       </table>
@@ -53,8 +53,8 @@
                 </tr>
               </table>
             </h5>
-            <a class="waves-effect waves-green red white-text btn" ng-click="test()">Cancel</a>
-            <a ng-click="payment()" class="waves-effect waves-green red white-text btn">Payment</a><br><br>
+            <a class="waves-effect waves-green red white-text btn" ng-click="cancelOrder()">Cancel</a>
+            <a ng-click="payment()" class="waves-effect waves-green red white-text btn" ng-disabled="!orderTotal">Payment</a><br><br>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@
                   <td>Cash Recieved:</td>
                   <td>
                     <div input-field>
-                      <input type="number" ng-model="currentOrder.CashRecieved" length="7" step="any" ng-change="changeDue(currentOrder)">
+                      <input type="number" ng-model="order.CashRecieved" length="7" step="0.01" min="0" ng-change="changeDue(currentOrder)">
                     </div>
                   </td>
                 </tr>
@@ -86,8 +86,8 @@
                 </tr>
               </table>
             </h5>
-            <a class="waves-effect waves-green red white-text btn" type="reset">Cancel</a>
-            <a class="waves-effect waves-green red white-text btn">Complete Transaction</a><br><br>
+            <a class="waves-effect waves-green red white-text btn" type="reset" ng-click="cancelOrder()">Cancel</a>
+            <a ng-click="completeOrder()" class="waves-effect waves-green red white-text btn" ng-disabled="!orderChange || orderChange < 0">Complete Transaction</a><br><br>
           </div>
         </div>
       </div>

@@ -32,6 +32,7 @@ app.factory("InventoryFactory", (CashDrawerAPI, $q, $http) => {
       $http.post(`${CashDrawerAPI}products`, JSON.stringify(newProduct))
         .then((objFromDb) => {
           resolve(objFromDb);
+          console.log("objFromDb in Factory", objFromDb);
         })
       .catch((error)=>{
         reject(error);

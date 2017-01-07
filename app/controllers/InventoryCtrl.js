@@ -22,6 +22,7 @@ app.controller("InventoryCtrl", function($scope, $http, $location, $routeParams,
 app.controller("InventoryNewCtrl", function($scope, InventoryFactory, $location, $routeParams){
   $scope.title = "Add a New Product";
   $scope.btnText = "Save";
+  $scope.redBtn = "Cancel";
   $scope.product = {
     name: "",
     price: "",
@@ -37,6 +38,9 @@ app.controller("InventoryNewCtrl", function($scope, InventoryFactory, $location,
       $location.url('/inventory');
     });
   };
+  $scope.deleteItem = () => {
+    $location.url("/inventory");
+  };
 
 });
 
@@ -44,6 +48,7 @@ app.controller("InventoryNewCtrl", function($scope, InventoryFactory, $location,
 app.controller("InventoryEditCtrl", function($scope, InventoryFactory, $location, $routeParams){
   $scope.title = "Update Product";
   $scope.btnText = "Update";
+  $scope.redBtn = "Delete Product";
   $scope.product = {};
 
   InventoryFactory.getSingleProduct($routeParams.productId)
@@ -53,6 +58,12 @@ app.controller("InventoryEditCtrl", function($scope, InventoryFactory, $location
   $scope.addNewItem = () => {
     InventoryFactory.updateProduct($routeParams.productId, $scope.product)
     .then((response) => {
+      $location.url("/inventory");
+    });
+  };
+  $scope.deleteItem = () => {
+    InventoryFactory.deleteProduct($routeParams.productId)
+    .then((response)=>{
       $location.url("/inventory");
     });
   };

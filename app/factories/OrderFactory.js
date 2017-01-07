@@ -7,6 +7,7 @@ app.factory("OrderFactory", (CashDrawerAPI, $q, $http) => {
       $http.post(`${CashDrawerAPI}orders`, JSON.stringify(newOrder))
         .then((objFromDb) => {
           resolve(objFromDb);
+          console.log("New Order objFromDb", objFromDb);
         })
       .catch((error)=>{
         reject(error);

@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("OrderCtrl", function($scope, InventoryFactory, OrderFactory, $location, $window, SearchTermData){
+app.controller("OrderCtrl", function($scope, $route, InventoryFactory, OrderFactory, $location, $window, $http, SearchTermData){
   $scope.searchText = SearchTermData;
   $scope.currentOrder = {};
   $scope.products = [];
@@ -10,6 +10,7 @@ app.controller("OrderCtrl", function($scope, InventoryFactory, OrderFactory, $lo
     subTotal: $scope.orderSubtotal,
     tax: $scope.orderTax
   };
+
 
 // Grabs Products from inventory
   InventoryFactory.getProductList()
@@ -31,24 +32,21 @@ app.controller("OrderCtrl", function($scope, InventoryFactory, OrderFactory, $lo
     console.log("orderSubtotal", $scope.orderSubtotal);
     $scope.orderTotal = $scope.orderSubtotal + $scope.orderTax;
     $scope.lineTotal(product);
+    //only deletes one item
+    // $scope.bob = () => {
+    //   delete $scope.currentOrder[product.productId];
+
+    // };
   };
+  // $scope.bob = (currentOrder) => {
+  //   delete $scope.currentOrder;
 
-
-
-/* NOT WORKING Button to delete individual item from current order, and to clear current order */
-  $scope.delItem = () => {
-    console.log("x button");
-  };
-
-  // $scope.delFromOrder = (product) => {
-  //   delete product[key]
-  // };
-  // $scope.cancelOrder = (product) => {
-  //   $window.localStorage.clear(product);
   // };
 
 
-
+  $scope.cancelOrder = () => {
+    $route.reload();
+  };
 // Changes line total if user changes qty box NOT hooked up to SUBTOTAL yet
   $scope.lineTotal = (product) => {
     $scope.lineSubtotal = (product.price * product.purchaseNumber);
@@ -100,6 +98,9 @@ app.controller("OrderCtrl", function($scope, InventoryFactory, OrderFactory, $lo
         };
         OrderFactory.postNewLineItem(lineitem)
         .then((data)=>{
+          if (data.status !== 400 || 404 ) {
+            $route.reload();
+          }
         });
       }
     });

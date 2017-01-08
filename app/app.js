@@ -1,28 +1,40 @@
 "use strict";
 
-var app = angular.module("CashDrawer", ["ngRoute"]);
+var app = angular.module("CashDrawer", ["ngRoute", "ui.materialize"])
+.constant("CashDrawerAPI", "http://localhost:5000/");
 
 app.config(function($routeProvider){
   $routeProvider.
     when('/',{
-      templateUrl: 'partials/home.html',
-      controller: 'HomeCtrl'
+      templateUrl: 'partials/demo.html',
     }).
-    when('/open-shop', {
+    when('/openshop', {
       templateUrl: 'partials/cashbal.html',
-      controller: 'LedgerCtrl'
+      controller: 'LedgerOpenCtrl'
     }).
-    when('/close-shop', {
-      templateUrl: 'partials/cashbal.html',
-      controller: "LedgerCtrl"
+    when('/openshop2', {
+      templateUrl: 'partials/postOpenDrawerBal.html',
+      controller: 'PostOpenBalCtrl'
     }).
     when('/inventory', {
       templateUrl: 'partials/inventory.html',
-      controller: "ProductCtrl"
+      controller: 'InventoryCtrl'
     }).
-    when('/cash-register', {
+    when('/addproduct', {
+      templateUrl: 'partials/product-form.html',
+      controller: 'InventoryNewCtrl'
+    }).
+    when('/editproduct/:productId', {
+      templateUrl: 'partials/product-form.html',
+      controller: 'InventoryEditCtrl'
+    }).
+    when('/closeshop', {
+      templateUrl: 'partials/cashbal.html',
+      controller: 'LedgerCloseCtrl'
+    }).
+    when('/cashregister', {
       templateUrl: 'partials/register.html',
-      controller: "OrderCtrl"
+      controller: 'OrderCtrl'
     }).
     otherwise('/');
 });

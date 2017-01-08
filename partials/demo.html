@@ -1,0 +1,185 @@
+<div ng-include="'partials/searchbar.html'"></div>
+<div class="row">
+
+<!-- Content to the left side of the screen -->
+  <div class="col s8 m8 l8">
+    <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Pizza</span>
+          <h5>$4.25</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Pizza</span>
+          <h5>$4.25</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Bread</span>
+          <h5>$1.25</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Beer</span>
+          <h5>$6.75</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Candy</span>
+          <h5>$1.25</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Beef Sandwich</span>
+          <h5>$3.25</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Pizza</span>
+          <h5>$4.25</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Pizza</span>
+          <h5>$4.25</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Pizza</span>
+          <h5>$4.25</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Pizza</span>
+          <h5>$4.25</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Pizza</span>
+          <h5>$4.25</h5>
+        </div>
+      </div>
+    </div>
+   <div class="col s4 m3 l2">
+      <div class="card small productCard blue-grey darken-4">
+        <div class="card-content white-text">
+          <span class="card-title">Pizza</span>
+          <h5>$4.25</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right side pannel for transactions -->
+  <div id="shoppingCartPanel" class="col s4 m4 l4 blue darken-1">
+    <!--Panels for Product selection  -->
+    <div class="col s12">
+      <table class="bordered card-panel lineItem">
+        <tr>
+          <td><a class="delBtn red white-text">X</a></td>
+          <td><strong>Pizza<strong></td>
+          <td><input type="number" length="2" min="0" max="9" class="lineItemQty" placeholder="1"></td>
+          <td>X</td>
+          <td>2.50</td>
+          <td><strong class="red-text">$5.00</strong></td>
+        </tr>
+        <tr>
+          <td><a class="delBtn red white-text">X</a></td>
+          <td><strong>Beer<strong></td>
+          <td><input type="number" length="2" min="0" max="9" class="lineItemQty" placeholder="1"></td>
+          <td>X</td>
+          <td>2.50</td>
+          <td><strong class="red-text">$5.00</strong></td>
+        </tr>
+        <tr>
+          <td><a class="delBtn red white-text">X</a></td>
+          <td><strong>Wings<strong></td>
+          <td><input type="number" length="2" min="0" max="9" class="lineItemQty" placeholder="1"></td>
+          <td>X</td>
+          <td>2.50</td>
+          <td><strong class="red-text">$5.00</strong></td>
+        </tr>
+      </table>
+
+<!-- Complete Transaction Display Area -->
+      <div class="valign-wrapper">
+        <div class="valign">
+          <div id="transactionDisplay" class="blue lighten-4 col s12 m12">
+            <!-- <h5>Subtotal: $12.38<br>Tax: $1.03</h5> -->
+            <h5>
+              <table id="subTax">
+                <tr>
+                  <td>Subtotal:</td>
+                  <td>$12.38</td>
+                </tr>
+                <tr>
+                  <td>Tax:</td>
+                  <td>$1.03</td>
+                </tr>
+              </table>
+            </h5>
+            <h5 class="total green darken-3 white-text">
+              <table>
+                <tr>
+                  <td>Total:</td>
+                  <td>$13.41</td>
+                </tr>
+              </table>
+            </h5>
+            <a class="waves-effect waves-green red white-text btn">Cancel</a>
+<!--        <a class="waves-effect waves-green red white-text btn" href="#paymentModal" modal>Payment</a> -->
+            <a class="waves-effect waves-green red white-text btn">Payment</a><br><br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Payment Modal -->
+<!-- <div id="paymentModal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h5>Cash Recieved</h5>
+    <div input-field>
+      <input class="blue lighten-5" type="number" ng-model="transaction.CashRecieved" length="6">
+    </div>
+    <h6>Change Due: $2.30</h6>
+  </div>
+  <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Complete Transaction</a>
+  </div>
+</div> -->

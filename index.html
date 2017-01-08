@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen,projection" href="lib/bower_components/materialize/dist/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" media="screen,projection" href="css/main.css">
     <script src="https://use.fontawesome.com/e2992a68a7.js">
-  </script>s
+  </script>
   </head>
   <body ng-app="CashDrawer">
     <div ng-include="'partials/navbar.html'"></div>
@@ -20,19 +20,26 @@
 
     <!-- 3rd party libs -->
     <script src="lib/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="lib/bower_components/materialize/dist/js/materialize.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
     <script src="lib/bower_components/angular/angular.min.js"></script>
+    <script src="lib/bower_components/materialize/dist/js/materialize.min.js"></script>
     <script src="lib/bower_components/angular-materialize/src/angular-materialize.js"></script>
     <script src="lib/bower_components/angular-route/angular-route.min.js"></script>
-    <script src="node_modules/chart.js/Chart.min.js"></script>
-    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+    <script src="lib/bower_components/chart.js/dist/Chart.min.js"></script>
+    <script src="lib/bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
 
     <!-- App specific files -->
     <script src="app/app.js"></script>
     <!-- providers -->
+    <script src="app/factories/SearchFactory.js"></script>
     <script src="app/factories/InventoryFactory.js"></script>
+    <script src="app/factories/OrderFactory.js"></script>
     <!-- controllers -->
     <script src="app/controllers/NavCtrl.js"></script>
+    <script src="app/controllers/LedgerCtrl.js"></script>
+    <script src="app/controllers/PostOpenBalCtrl.js"></script>
+    <script src="app/controllers/InventoryCtrl.js"></script>
+    <script src="app/controllers/OrderCtrl.js"></script>
 
   </body>
 </html>

@@ -1,0 +1,102 @@
+<div ng-include="'partials/searchbar.html'"></div>
+<div class="row">
+<!-- Content to the left side of the screen -->
+  <div class="col s8 m8 l8">
+<!-- Product Cards -->
+    <div ng-repeat="product in products | filter: searchText.search">
+      <div class="col s4 m3 l2">
+        <div class="productCard card small blue-grey darken-4" ng-click="addItemToOrder(product)">
+          <a class="card-content white-text">
+            <h6 class="center-align productTitle">{{product.name}}</h6>
+            <h5 class="center-align">${{product.price | number: 2}}</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right side pannel for transactions -->
+  <div id="shoppingCartPanel" class="col s4 m4 l8 blue darken-1">
+    <div class="col s12">
+  <!--Panels for line items in current order  -->
+      <table class="bordered card-panel lineItem">
+        <tr ng-repeat="(key, product) in currentOrder">
+          <td><a ng-click="delItem()" class="delBtn red white-text">X</a></td>
+          <td><strong>{{product.name}}<strong></td>
+          <td><input type="number" length="2" min="1" max="{{product.quantity}}" class="lineItemQty" placeholder="1" ng-model="product.purchaseNumber" ng-change="lineTotal(product)"></td>
+          <td>X</td>
+          <td>{{product.price | number: 2}}</td>
+          <td><strong ng-bind="'$' + (product.price * product.purchaseNumber | number: 2)" class="red-text"></strong></td>
+        </tr>
+      </table>
+<!-- Complete Transaction Display Area -->
+      <div class="valign-wrapper" ng-hide="hideTrans">
+        <div class="valign">
+          <div id="transactionDisplay" class="blue lighten-4 col s12 m12">
+            <h5>
+              <table id="subTax">
+                <tr>
+                  <td>Subtotal:</td>
+                  <td>${{orderSubtotal | number: 2}}</td>
+                </tr>
+                <tr>
+                  <td>Tax:</td>
+                  <td>${{orderTax | number: 2}}</td>
+                </tr>
+              </table>
+            </h5>
+            <h5 class="total green darken-3 white-text">
+              <table>
+                <tr>
+                  <td>Total:</td>
+                  <td>${{orderTotal | number: 2}}</td>
+                </tr>
+              </table>
+            </h5>
+            <a class="waves-effect waves-green red white-text btn" ng-click="cancelOrder()">Cancel</a>
+            <a ng-click="payment()" class="waves-effect waves-green red white-text btn" ng-disabled="!orderTotal">Payment</a><br><br>
+          </div>
+        </div>
+      </div>
+<!-- PAYMENT AREA -->
+      <div class="valign-wrapper" ng-show="showPayment">
+        <div class="valign">
+          <div id="transactionDisplay" class="blue lighten-4 col s12 m12">
+            <h5 class="total green darken-3 white-text">
+              <table>
+                <tr>
+                  <td>Total:</td>
+                  <td>${{orderTotal | number: 2}}</td>
+                </tr>
+              </table>
+            </h5>
+            <h5>
+              <table id="subTax">
+                <tr>
+                  <td>Cash Recieved:</td>
+                  <td>
+                    <div input-field>
+                      <input type="number" ng-model="order.CashRecieved" length="7" step="0.01" min="0" ng-change="changeDue(currentOrder)">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Change Due:</td>
+                  <td>${{orderChange | number: 2}}</td>
+                </tr>
+              </table>
+            </h5>
+            <a class="waves-effect waves-green red white-text btn" type="reset" ng-click="cancelOrder()">Cancel</a>
+            <a ng-click="completeOrder()" class="waves-effect waves-green red white-text btn" ng-disabled="!orderChange || orderChange < 0">Complete Transaction</a><br><br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+

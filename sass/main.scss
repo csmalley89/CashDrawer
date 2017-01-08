@@ -1,0 +1,65 @@
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.productCard {
+  height: inherit;
+  max-height: 170px;
+  border-radius: 25px;
+}
+
+.productTitle {
+  font-size: 125%;
+  margin: 5%;
+  line-height: 150%;
+}
+
+#shoppingCartPanel {
+  height: 100%;
+  min-height: 100vh;
+  max-width: 33.333vw;
+  display: table-row;
+}
+
+#transactionDisplay {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 33.33vw;
+}
+
+#subTax {
+  width: 26vw;
+}
+
+.lineItem {
+  margin: 0;
+  border-bottom: 2px solid black;
+}
+
+.total {
+  padding: 10px;
+  margin-left: -10px;
+  margin-right: -12px;
+}
+
+.delBtn {
+  padding: 5px;
+  border-radius: 25%;
+  margin-right: 10px;
+}
+
+input.lineItemQty {
+  border: 1px solid !important;
+  max-width: 20px;
+  margin: 0 !important;
+  height: inherit !important;
+  text-align: -webkit-center;
+}
+
+
+nav .input-field input:focus, nav .input-field input[type=text]:valid, nav .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, nav .input-field input[type=url]:valid, nav .input-field input[type=date]:valid {
+  width: 80vw;
+}

@@ -1,0 +1,46 @@
+<div class="container">
+
+  <div class="row">
+    <form class="col s12">
+      <h3>{{title}}</h3>
+      <div class="row">
+        <div class="input-field col s12 m10 l10">
+          <input ng-model="product.name" type="text" class="validate teal lighten-4">
+          <label for="Product">Product Name/Description</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m2 l2">
+          <input tooltipped ng-model="product.price" step="any" type="number" class="validate teal lighten-4" data-position="bottom" data-delay="50" data-tooltip="How much are you charging customers?">
+          <label for="price">Price</label>
+        </div>
+        <div class="input-field col s6 m2 l2">
+          <input tooltipped ng-model="product.cost" step="any" type="number" class="validate teal lighten-4" data-position="bottom" data-delay="50" data-tooltip="What does this cost you?">
+          <label for="cost">Cost</label>
+        </div>
+        <div class="input-field col s6 m2 l2">
+          <input tooltipped ng-model="product.quantity" type="number" class="validate teal lighten-4" data-position="bottom" data-delay="50" data-tooltip="How many do you have in stock?">
+          <label for="qty">Quantity</label>
+        </div>
+        <div class="input-field col s6 m2 l2">
+          <input tooltipped ng-model="product.taxRate" type="number" step="any" class=" teal lighten-4" data-position="bottom" data-delay="50" data-tooltip="What is the sales tax rate?" ng-show="product.isTaxable">
+          <label for="taxRate" ng-show="product.isTaxable">Tax Rate</label>
+        </div>
+        <div class="col s6 m3 l2">
+          <p>Is this taxable?</p>
+          <div class="switch">
+            <label>
+              No
+              <input ng-model="product.isTaxable" type="checkbox">
+              <span class="lever"></span>
+              Yes
+            </label>
+          </div>
+        </div>
+      </div>
+      <button class="waves-effect waves-light btn" ng-click="addNewItem()">{{btnText}}</button>
+      <input type="reset" class="waves-effect waves-light btn" value="Clear Form">
+      <button class="waves-effect waves-green red white-text btn" ng-click="deleteItem()">{{redBtn}}</button>
+    </form>
+  </div>
+</div>

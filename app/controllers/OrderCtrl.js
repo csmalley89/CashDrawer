@@ -70,18 +70,36 @@ app.controller("OrderCtrl", function($scope, InventoryFactory, OrderFactory, $lo
     $scope.order.tax = $scope.orderTax;
     OrderFactory.postNewOrder($scope.order)
     .then ((data)=>{
-      console.log(data.data.orderId);
       $scope.order.orderId = data.data.orderId;
       for (let key in $scope.currentOrder) {
         $scope.productId = $scope.currentOrder[key].productId;
-        console.log("productId", $scope.productId);
+        $scope.purchaseNumber = $scope.currentOrder[key].purchaseNumber;
+        $scope.name = $scope.currentOrder[key].name;
+        $scope.price = $scope.currentOrder[key].price;
+        $scope.cost = $scope.currentOrder[key].cost;
+        $scope.quantity = $scope.currentOrder[key].quantity;
+        $scope.isTaxable = $scope.currentOrder[key].isTaxable;
+        $scope.taxRate = $scope.currentOrder[key].taxRate;
+        $scope.qtyLeft = ($scope.quantity - $scope.purchaseNumber);
+        let editedProduct = {
+          productId: $scope.productId,
+          name: $scope.name,
+          price: $scope.price,
+          cost: $scope.cost,
+          quantity: $scope.qtyLeft,
+          isTaxable: $scope.isTaxable,
+          taxRate: $scope.taxRate
+        };
+        InventoryFactory.updateProduct($scope.productId, editedProduct)
+        .then((data)=>{
+        });
         let lineitem = {
           productId: $scope.productId,
-          orderId: $scope.order.orderId
+          orderId: $scope.order.orderId,
+          quantity: $scope.purchaseNumber
         };
         OrderFactory.postNewLineItem(lineitem)
         .then((data)=>{
-          console.log("data from lineItem post", data);
         });
       }
     });
